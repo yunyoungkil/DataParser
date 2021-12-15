@@ -3,10 +3,14 @@ package com.example.dataparser;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+
 import android.widget.TextView;
 
+
 public class MainActivity extends AppCompatActivity {
+
 
     // Key for saving the state of the TextView
     private static final String TEXT_STATE = "currentText";
@@ -14,12 +18,13 @@ public class MainActivity extends AppCompatActivity {
     // The TextView where we will show results
     private TextView mTextView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         mTextView = findViewById(R.id.textView1);
+
 
         // Restore TextView if there is a savedInstanceState bundle.
         if (savedInstanceState != null) {
@@ -35,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
      * @param view The view (Button) that was clicked.
      */
     public void startTask(View view) {
+
+
+
         // Put a message in the text view.
         mTextView.setText(R.string.napping);
 
@@ -54,5 +62,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
         // Save the state of the TextView
         outState.putString(TEXT_STATE, mTextView.getText().toString());
+
+         Log.d("마켓: " +outState,"이름: ");
     }
 }
