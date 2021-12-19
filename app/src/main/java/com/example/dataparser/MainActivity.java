@@ -76,9 +76,8 @@ public class MainActivity extends AppCompatActivity {
         // Put a message in the text view.
         mTextView.setText(R.string.napping);
 
-        // Start the AsyncTask.
-        // The AsyncTask has a callback that will update the text view.
 
+/*
         AsyncTask<String, Void, JSONArray> mAsyncTaskParser_JsonData = new AsyncTaskParser(mTextView,mListView).execute();
         arrayList = new ArrayList<>();
         try {
@@ -95,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
         } catch (ExecutionException | InterruptedException | JSONException e) {
             e.printStackTrace();
         }
+*/
+        new NewsApi().execute();
+
+
+
     }
 
     /**

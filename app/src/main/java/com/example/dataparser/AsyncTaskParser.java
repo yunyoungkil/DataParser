@@ -59,6 +59,7 @@ public class AsyncTaskParser extends AsyncTask<String, Void, JSONArray> {
                 .addHeader("Accept", "application/json")
                 .build();
 
+
         try {
             response = client.newCall(request).execute();
             String s = response.body().string();
@@ -74,6 +75,8 @@ public class AsyncTaskParser extends AsyncTask<String, Void, JSONArray> {
 
            Log.d("마켓" ,"이름: "+ korean_name);
             */
+
+
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
