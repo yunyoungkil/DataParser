@@ -5,6 +5,8 @@ package com.example.dataparser;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.JsonParser;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,14 +27,18 @@ public class NewsApi extends AsyncTask<String, Void, JSONArray> {
     private String NaverApi_String;
     JSONArray jsonArray = new JSONArray();
    // JSONObject jsonObject = new JSONObject();
-
+   //JsonParser jParser = new JsonParser();
     @Override
     protected JSONArray doInBackground(String... string) {
         NaverApi_String = NaverApi();
         try {
             JSONObject jObject = new JSONObject(NaverApi_String);
 
-            Log.d("%%%%%%%%%%%%%%%%%", "" + jObject.getString("title"));
+            JSONArray items = (JSONArray) jObject.get("items");
+            JSONObject title = (JSONObject) items.get(1);
+
+            Log.d("%%%%%%%%%%%%%%%%%", "" + title.getString("title"));
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -48,7 +54,7 @@ public class NewsApi extends AsyncTask<String, Void, JSONArray> {
 
         String text = null;
         try {
-            text = URLEncoder.encode("코인", "UTF-8");
+            text = URLEncoder.encode("코인+웨이브", "UTF-8");
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("검색어 인코딩 실패",e);
         }
