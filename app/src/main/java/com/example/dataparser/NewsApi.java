@@ -35,10 +35,14 @@ public class NewsApi extends AsyncTask<String, Void, JSONArray> {
             JSONObject jObject = new JSONObject(NaverApi_String);
 
             JSONArray items = (JSONArray) jObject.get("items");
-            JSONObject title = (JSONObject) items.get(1);
+            for (int i =0; i < items.length(); i++) {
+                JSONObject title = (JSONObject) items.get(i);
 
-            Log.d("%%%%%%%%%%%%%%%%%", "" + title.getString("title"));
-
+                Log.d(">>>>", "" + title.getString("pubDate"));
+                Log.d(">>>>", "" + title.getString("title"));
+                Log.d(">>>>", "" + title.getString("description"));
+                Log.d(">>>>", "" + title.getString("originallink"));
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -53,8 +57,10 @@ public class NewsApi extends AsyncTask<String, Void, JSONArray> {
 
 
         String text = null;
+        String text_tab_opt = null;
         try {
-            text = URLEncoder.encode("코인+웨이브", "UTF-8");
+            text = URLEncoder.encode("코인 전망", "UTF-8");
+
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("검색어 인코딩 실패",e);
         }
